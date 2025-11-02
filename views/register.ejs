@@ -9,6 +9,13 @@
     <h1>register</h1>
     <%- include('partials/errors.ejs') %>
     <form action="/register" method="POST">
+      <label for="fullname">Full Name</label>
+      <input
+        id="fullname"
+        name="fullname"
+        placeholder="Full Name"
+        type="text"
+      />
       <label for="username">Username</label>
       <input id="username" name="username" placeholder="username" type="text" />
       <label for="password">Password</label>

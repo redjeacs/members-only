@@ -4,6 +4,12 @@ const emptyMessage = "is required";
 const length = "should be between 1 and 50 characters";
 
 module.exports.registerValidation = [
+  body("fullname")
+    .trim()
+    .notEmpty()
+    .withMessage("Full name " + emptyMessage)
+    .isLength({ min: 1, max: 50 })
+    .withMessage("Full name " + length),
   body("username")
     .trim()
     .notEmpty()
