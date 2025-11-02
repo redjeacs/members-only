@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 8000;
 
 const indexRouter = require("./routes/indexRouter");
 const loginRouter = require("./routes/loginRouter");
+const registerRouter = require("./routes/registerRouter");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -32,6 +33,7 @@ require("./config/passportConfig");
 //Routes
 
 app.use("/", indexRouter);
+app.use("/register", registerRouter);
 app.use("/login", loginRouter);
 
 // Server
