@@ -1,4 +1,4 @@
-const passport = requrie("passport");
+const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const bcrypt = require("bcryptjs");
 const db = require("../db/queries");
@@ -26,7 +26,7 @@ passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
-passport.deserializeuser(async (id, done) => {
+passport.deserializeUser(async (id, done) => {
   try {
     const { rows } = await db.getUserFromId(id);
   } catch (err) {

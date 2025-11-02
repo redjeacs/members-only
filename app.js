@@ -1,17 +1,17 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const path = requrie("node:path");
+const path = require("node:path");
 const passport = require("passport");
 const sessionConfig = require("./config/sessionConfig");
 
 const PORT = process.env.PORT || 8000;
 
 const indexRouter = require("./routes/indexRouter");
-const passport = require("passport");
+const loginRouter = require("./routes/loginRouter");
 
 app.set("views", path.join(__dirname, "views"));
-app.set("view-engine", "ejs");
+app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
@@ -33,8 +33,6 @@ require("./config/passportConfig");
 
 app.use("/", indexRouter);
 app.use("/login", loginRouter);
-app.use("/sign-up", signupRouter);
-app.use("/logout", logoutRouter);
 
 // Server
 
