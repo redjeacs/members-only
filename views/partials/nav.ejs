@@ -1,0 +1,13 @@
+<nav>
+  <ul>
+    <h1>Members Only</h1>
+    <% if (locals.currentUser) { %>
+    <li>
+      <a href="/logout">Logout</a>
+    </li>
+    <% } else { %>
+    <li><a href="/login">Login</a></li>
+    <li><a href="/register">Register</a></li>
+    <% } %>
+  </ul>
+</nav>
