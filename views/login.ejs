@@ -6,7 +6,8 @@
     <title>Log In</title>
   </head>
   <body>
-    <form action="/log-in" method="POST">
+    <%- include('partials/errors.ejs') %>
+    <form action="/login" method="POST">
       <label for="username">Username</label>
       <input id="username" name="username" placeholder="username" type="text" />
       <label for="password">Password</label>

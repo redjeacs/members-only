@@ -23,3 +23,18 @@ module.exports.registerValidation = [
     .isLength({ min: 1, max: 50 })
     .withMessage("Password " + length),
 ];
+
+module.exports.loginValidation = [
+  body("username")
+    .trim()
+    .notEmpty()
+    .withMessage("Username " + emptyMessage)
+    .isLength({ min: 1, max: 50 })
+    .withMessage("Username " + length),
+  body("password")
+    .trim()
+    .notEmpty()
+    .withMessage("Password " + emptyMessage)
+    .isLength({ min: 1, max: 50 })
+    .withMessage("Password " + length),
+];
