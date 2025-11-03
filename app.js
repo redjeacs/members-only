@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 8000;
 const indexRouter = require("./routes/indexRouter");
 const loginRouter = require("./routes/loginRouter");
 const registerRouter = require("./routes/registerRouter");
+const logoutRouter = require("./routes/logoutRouter");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -23,8 +24,8 @@ app.use(sessionConfig());
 app.use(passport.session());
 
 app.use((req, res, next) => {
-  console.log(req.user);
   res.locals.currentUser = req.user;
+  console.log(res.locals.currentUser);
   next();
 });
 
@@ -35,6 +36,7 @@ require("./config/passportConfig");
 app.use("/", indexRouter);
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
+app.use("/logout", logoutRouter);
 
 // Server
 
