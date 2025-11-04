@@ -1,3 +1,15 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  height: 100%;
+}
+
 /* Nav */
 
 nav {
@@ -50,7 +62,7 @@ nav ul li a:hover {
 /* Footer */
 
 footer {
-  position: fixed;
+  position: sticky;
   display: flex;
   justify-content: center;
   bottom: 0;

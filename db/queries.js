@@ -16,7 +16,7 @@ exports.getUserFromId = async (userId) => {
 
 exports.createUser = async (fullname, username, password) => {
   await pool.query(
-    "INSERT INTO users (fullname, username, password) VALUES ($1, $2, $3)",
-    [fullname, username, password]
+    "INSERT INTO users (fullname, username, password, status) VALUES ($1, $2, $3, $4)",
+    [fullname, username, password, "user"]
   );
 };
