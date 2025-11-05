@@ -23,8 +23,9 @@ exports.createUser = async (fullname, username, password) => {
 
 exports.getAllMessages = async (req, res) => {
   const { rows } = await pool.query(
-    "SELECT *, TO_CHAR(timestamp, 'YYYY-MM-DD') AS formatted_date FROM messages JOIN users ON user_id = users.id;"
+    "SELECT *, TO_CHAR(timestamp, 'YYYY-MM-DD') AS formatted_date FROM users AS u JOIN messages AS m ON u.id = m.user_id;"
   );
+  console.log(rows);
   return rows;
 };
 
@@ -33,4 +34,14 @@ exports.createMessage = async (user_id, title, text) => {
     "INSERT INTO messages (user_id, title, text) VALUES ($1, $2, $3)",
     [user_id, title, text]
   );
+};
+
+exports.addMember = async (user_id) => {
+  await pool.query(`UPDATE users SET status = $1 WHERE id = ${user_id}`, [
+    "member",
+  ]);
+};
+
+exports.deleteMessage = async (messageId) => {
+  await pool.query("DELETE FROM messages WHERE id = $1", [messageId]);
 };

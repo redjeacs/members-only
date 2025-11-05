@@ -5,4 +5,6 @@ const indexRouter = Router();
 
 indexRouter.get("/", indexController.renderHomePage);
 
+indexRouter.get("/member", indexController.memberAdd);
+
 module.exports = indexRouter;

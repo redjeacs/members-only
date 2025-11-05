@@ -92,6 +92,10 @@ footer {
   border-radius: 10px;
 }
 
+.message {
+  position: relative;
+}
+
 .user {
   display: flex;
   gap: 1rem;
@@ -102,4 +106,12 @@ footer {
   display: flex;
   gap: 0.5rem;
   font-size: 0.9rem;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-50%, 0);
+  cursor: pointer;
 }

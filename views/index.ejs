@@ -7,7 +7,7 @@
     <title>Members Only</title>
   </head>
   <body>
-    <%- include('partials/nav') %>
+    <%- include('partials/nav')%>
     <main>
       <div class="messages">
         <% if (!locals.currentUser) { %>
@@ -17,7 +17,7 @@
         <% } else if (locals.currentUser && locals.currentUser.status ===
         'user') { %>
         <div class="notification">
-          <a href="/memter">Become a member</a> to see the names and usernames
+          <a href="/member">Become a member</a> to see the names and usernames
           on the messages
         </div>
         <% } else { %>
@@ -28,6 +28,12 @@
         <div class="error">Error loading messages</div>
         <% } else { messages.forEach((message) => { %>
         <div class="message">
+          <% if(locals.currentUser && locals.currentUser.status === 'admin') {
+          %>
+          <div class="delete-btn">
+            <a href="/message/delete/<%= message.id %>">X</a>
+          </div>
+          <%} %>
           <div class="user">
             <div class="icon"><%= message.status %> icon</div>
             <div>

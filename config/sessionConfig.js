@@ -11,5 +11,5 @@ module.exports = () =>
       tableName: "user_sessions",
       createTableIfMissing: true,
     }),
-    cookie: { maxAge: 24 * 60 * 60 * 1000 },
+    cookie: { maxAge: 1 * 60 * 60 * 1000 }, //1hr
   });
