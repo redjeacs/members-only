@@ -20,3 +20,10 @@ exports.createUser = async (fullname, username, password) => {
     [fullname, username, password, "user"]
   );
 };
+
+exports.getAllMessages = async (req, res) => {
+  const { rows } = await pool.query(
+    "SELECT *, TO_CHAR(timestamp, 'YYYY-MM-DD') AS formatted_date FROM messages JOIN users ON user_id = users.id;"
+  );
+  return rows;
+};

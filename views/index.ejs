@@ -10,20 +10,50 @@
     <%- include('partials/nav') %>
     <main>
       <div class="messages">
+        <% if (!locals.currentUser) { %>
+        <div class="notification">
+          <a href="/login">Login</a> to post your own message
+        </div>
+        <% } else if (locals.currentUser && locals.currentUser.status ===
+        'user') { %>
+        <div class="notification">
+          <a href="/memter">Become a member</a> to see the names and usernames
+          on the messages
+        </div>
+        <% } else { %>
+        <div class="notification">
+          Welcome <%= locals.currentUser.fullname %> to the secret area!
+        </div>
+        <% } %> <% if(!messages) { %>
+        <div class="error">Error loading messages</div>
+        <% } else { messages.forEach((message) => { %>
         <div class="message">
           <div class="user">
-            <div class="icon">icon</div>
+            <div class="icon"><%= message.status %> icon</div>
             <div>
-              <div class="fullname">Admin</div>
-              <div class="user-info">
-                <p class="username">@adminredjeacs</p>
-                <p class="timestamp">*11-03-2025</p>
+              <% if (!locals.currentUser || locals.currentUser.status ===
+              'user') { %>
+              <div>
+                <div class="fullname">****</div>
+                <div class="user-info">
+                  <p class="username">@****</p>
+                  <p class="timestamp">- <%= message.formatted_date %></p>
+                </div>
               </div>
+              <% } else { %>
+              <div class="fullname"><%= message.fullname %></div>
+              <div class="user-info">
+                <p class="username">@<%= message.username %></p>
+                <div>-</div>
+                <p class="timestamp"><%= message.formatted_date %></p>
+              </div>
+              <% } %>
             </div>
           </div>
-          <h3 class="title">title</h3>
-          <p class="text">a bunch of texts</p>
+          <h3 class="title"><%= message.title %></h3>
+          <p class="text"><%= message.text %></p>
         </div>
+        <% })} %>
       </div>
     </main>
     <%- include('partials/footer') %>
