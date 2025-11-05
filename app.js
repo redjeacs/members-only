@@ -11,6 +11,7 @@ const indexRouter = require("./routes/indexRouter");
 const loginRouter = require("./routes/loginRouter");
 const registerRouter = require("./routes/registerRouter");
 const logoutRouter = require("./routes/logoutRouter");
+const messageRouter = require("./routes/messageRouter");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -37,6 +38,7 @@ app.use("/", indexRouter);
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
 app.use("/logout", logoutRouter);
+app.use("/message", messageRouter);
 
 // Server
 
