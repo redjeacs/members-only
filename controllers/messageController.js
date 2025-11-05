@@ -28,7 +28,6 @@ exports.messageFormPost = [
 
 exports.messageDelete = async (req, res) => {
   messageId = req.params.id;
-  console.log(messageId);
   await db.deleteMessage(messageId);
   res.redirect("/");
 };

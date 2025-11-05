@@ -25,7 +25,6 @@ exports.getAllMessages = async (req, res) => {
   const { rows } = await pool.query(
     "SELECT *, TO_CHAR(timestamp, 'YYYY-MM-DD') AS formatted_date FROM users AS u JOIN messages AS m ON u.id = m.user_id;"
   );
-  console.log(rows);
   return rows;
 };
 

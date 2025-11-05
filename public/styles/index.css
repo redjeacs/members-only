@@ -114,4 +114,9 @@ footer {
   right: 0;
   transform: translate(-50%, 0);
   cursor: pointer;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 }
